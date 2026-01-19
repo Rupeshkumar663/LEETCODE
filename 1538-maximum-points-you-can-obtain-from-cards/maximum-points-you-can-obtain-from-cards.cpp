@@ -6,7 +6,6 @@ public:
         int r=n-1;
         int sum=0;
         int maxi=0;
-     
         for(int j=0;j<k;j++){
             sum+=cardPoints[j];
         }
@@ -14,13 +13,12 @@ public:
           return sum;
         maxi=sum;
         while(l<k){
-            sum-=cardPoints[k-(1+l)];
-            sum+=cardPoints[r];
+            sum=sum-cardPoints[k-(1+l)];
+            sum=sum+cardPoints[r];
            r--;
-            l++;;
+            l++;
             maxi=max(maxi,sum);
         }
-    
         return maxi;
     }
 };
