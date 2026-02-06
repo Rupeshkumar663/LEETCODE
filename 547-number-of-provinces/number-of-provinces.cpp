@@ -1,5 +1,6 @@
 //Approach-1 BY USING MAP AND DFS-------------
-/*class Solution {
+
+class Solution {
 public:
  void dfs(unordered_map<int,vector<int>>adj,int u, vector<bool>&visited){
     visited[u]=true;
@@ -101,7 +102,7 @@ public:
 };
 
 Approach-4 BFS AND USING MAP -------------
-*/
+
 class Solution {
 public:
    void BFS( vector<vector<int>>&adj,int u,vector<bool>&visited){
