@@ -1,3 +1,4 @@
+//Approach-1 BY USING MAP AND DFS-------------
 /*class Solution {
 public:
  void dfs(unordered_map<int,vector<int>>adj,int u, vector<bool>&visited){
@@ -31,7 +32,8 @@ public:
         return count;
     }
 };
-*/
+Approach-2 DFS AND WITHOUT USING MAP-------------
+
 class Solution {
 public:
  void dfs(vector<vector<int>>&adj,int u, vector<bool>&visited,int &n){
@@ -54,5 +56,46 @@ public:
             }
         }
         return count;
+    }
+};
+*/
+
+class Solution {
+public:
+   void BFS( unordered_map<int,vector<int>>&adj,int u,vector<bool>&visited){
+    queue<int>q;
+     q.push(u);
+      visited[u]=true;
+     while(!q.empty()){
+        int u=q.front();
+        q.pop();
+        for(auto x:adj[u]){
+            if(!visited[x] ){
+                 visited[x]=true;
+                q.push(x);
+            }
+        }
+     }
+   }
+    int findCircleNum(vector<vector<int>>& isConnected) {
+        int n=isConnected.size();
+       unordered_map<int,vector<int>>adj;
+       for(int i=0;i<n;i++){
+          for(int j=0;j<n;j++){
+            if(isConnected[i][j]==1){
+              adj[i].push_back(j);
+              adj[j].push_back(i);
+            }
+          }
+       }
+        vector<bool>visited(n,false);
+        int count=0;
+        for(int i=0;i<n;i++){
+            if(!visited[i]){
+                BFS(adj,i,visited);
+                count++;
+            }
+        }
+       return count;
     }
 };
