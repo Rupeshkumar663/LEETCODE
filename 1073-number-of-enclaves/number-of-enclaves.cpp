@@ -14,23 +14,13 @@ public:
            return 0;
         int m=grid.size();
         int n=grid[0].size();
-        
-         // top & bottom row
-        for(int j=0;j<n;j++){
-            if(grid[0][j]==1)
-             DFS(grid,0,j,m,n);
-            if(grid[m-1][j]==1)
-             DFS(grid,m-1,j,m,n);
-        }
-
-        // left & right column
         for(int i=0;i<m;i++){
-            if(grid[i][0]==1)
-             DFS(grid,i,0,m,n);
-            if(grid[i][n-1]==1)
-             DFS(grid,i,n-1,m,n);
+            for(int j=0;j<n;j++){
+                if(grid[i][j]==1 &&(i==0 || j==0 || i==m-1 ||j==n-1)){
+                    DFS(grid,i,j,m,n);
+                }
+            }
         }
-
         int result=0;
          for(int i=1;i<m;i++){
             for(int j=1;j<n;j++){
