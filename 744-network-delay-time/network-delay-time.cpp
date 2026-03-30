@@ -42,6 +42,8 @@ void BFS(vector<vector<pair<int,int>>>&adj, vector<int>&dist,int k){
 };
 */
 
+//T.C-O((V+E)log V)
+//S.C-O(V+E)
 class Solution {
 public:
 
