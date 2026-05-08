@@ -21,6 +21,7 @@ int solve(int n){
 */
 //T.c-O(n)
 //s.c-O(n)
+//Recursion+memoization--------------
 /*
 class Solution {
 public: 
@@ -42,9 +43,12 @@ int solve(int n,vector<int>&dp){
     }
 };
 */
+//T.c-O(n)
+//s.c-O(n)
+//Bottom up approach------------
+/*
 class Solution {
 public: 
-
     int climbStairs(int n) {
     vector<int>dp(n+1,-1);
      dp[0]=1;
@@ -53,5 +57,23 @@ public:
         dp[i]=dp[i-1]+dp[i-2];
      }
       return dp[n];
+    }
+};
+*/
+class Solution {
+public: 
+    int climbStairs(int n) {
+     if(n==1 || n==2){
+        return n;
+     }
+     int a=1;
+     int b=2;
+     int c=3;
+     for(int i=3;i<=n;i++){
+        c=a+b;
+        a=b;
+        b=c;
+     }
+     return c;
     }
 };
