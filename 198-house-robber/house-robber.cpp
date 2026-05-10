@@ -22,6 +22,7 @@ public:
 */
 //T.c-O(n)
 //s.c-O(n)
+//recursion+memoization
 /*
 class Solution {
 public:
@@ -44,10 +45,12 @@ int dp[101];
     }
 };
 */
+//T.c-O(n)
+//s.c-O(n)
+//bottom up approach--------------------------
+/*
 class Solution {
 public:
-
- 
     int rob(vector<int>& nums) {
        int n=nums.size();
        vector<int>dp(n+1,0);
@@ -59,5 +62,23 @@ public:
          dp[i]=max(steal,skip);
        }
        return dp[n];
+    }
+};
+*/
+class Solution {
+public:
+    int rob(vector<int>& nums) {
+       int n=nums.size();
+       int a=0;
+       int b=nums[0];
+       int c=0;
+       for(int i=2;i<=n;i++){
+        c=nums[i-1]+a;
+         c=max(c,b);
+         a=b;
+         b=c;
+         
+       }
+       return b;
     }
 };
