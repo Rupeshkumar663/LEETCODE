@@ -1,3 +1,6 @@
+//t.c-O(n)
+//s.c-O(n)
+//Recusrion+memoization
 class Solution {
 public:
   int solve(vector<int>& nums,vector<int>&dp,int i,int n){
