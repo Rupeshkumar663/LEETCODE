@@ -22,7 +22,10 @@ public:
     }
 };
 */
-
+//T.C-O(n)
+//S.C-O(n)
+//Recursion+memoization
+/*
 class Solution {
 public:
     int n;
@@ -31,11 +34,9 @@ public:
         if (idx==nums.size()){
             return 0;
         }
-        
          if(dp[idx][prev+1]!=-1 ){
             return dp[idx][prev+1];
         }
-       
         int skip=solve(idx+1,prev,nums);
         int take=0;
         if(prev==-1 || nums[idx]>nums[prev]){
@@ -43,11 +44,32 @@ public:
         }
         return dp[idx][prev+1]=max(take,skip);
     }
-
     int lengthOfLIS(vector<int>& nums) {
         n=nums.size();
         memset(dp,-1,sizeof(dp));
         return solve(0,-1,nums);
     }
 };
+
+*/
+
+class Solution {
+public:
+    int lengthOfLIS(vector<int>& nums) {
+       int n=nums.size();
+        vector<int>dp(n,1);
+        int result=1;
+         for(int i=1;i<n;i++){
+           for(int j=0;j<i;j++){
+             if(nums[i]>nums[j]){
+                dp[i]=max(dp[i],dp[j]+1);
+               
+             }
+             result=max(dp[i],result);
+           }
+         }
+         return result;
+    }
+};
+
 
