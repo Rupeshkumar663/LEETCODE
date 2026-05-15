@@ -26,12 +26,12 @@ public:
 //T.C-O(n)
 //S.C-O(n)
 //Recursion+memoization
-
+/*
 class Solution {
 public:
     int n;
     int dp[2501][2501];
-    int solve(int idx, int prev, vector<int>& nums){
+    int solve(int idx,int prev,vector<int>& nums){
         if (idx==nums.size()){
             return 0;
         }
@@ -51,12 +51,12 @@ public:
         return solve(0,-1,nums);
     }
 };
-
+*/
 
 //T.C-O(n)
 //S.C-O(n)
 //Bottom-up Approach
-/*
+
 class Solution {
 public:
     int lengthOfLIS(vector<int>& nums) {
@@ -74,5 +74,3 @@ public:
          return result;
     }
 };
-
-*/
