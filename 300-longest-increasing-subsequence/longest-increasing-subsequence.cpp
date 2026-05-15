@@ -5,7 +5,7 @@ class Solution {
 public:
     int n;
     int solve(int idx, int prev, vector<int>& nums){
-        if (idx==nums.size()){
+        if (idx>=nums.size()){
             return 0;
         }
         int skip=solve(idx+1,prev,nums);
@@ -22,10 +22,11 @@ public:
     }
 };
 */
+
 //T.C-O(n)
 //S.C-O(n)
 //Recursion+memoization
-/*
+
 class Solution {
 public:
     int n;
@@ -51,8 +52,11 @@ public:
     }
 };
 
-*/
 
+//T.C-O(n)
+//S.C-O(n)
+//Bottom-up Approach
+/*
 class Solution {
 public:
     int lengthOfLIS(vector<int>& nums) {
@@ -63,7 +67,6 @@ public:
            for(int j=0;j<i;j++){
              if(nums[i]>nums[j]){
                 dp[i]=max(dp[i],dp[j]+1);
-               
              }
              result=max(dp[i],result);
            }
@@ -72,4 +75,4 @@ public:
     }
 };
 
-
+*/
