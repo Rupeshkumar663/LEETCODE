@@ -26,7 +26,7 @@ int n;
 class Solution {
 public:
 int n;
-  int dp[1001][1000];
+  int dp[1001][1001];
   int solve(int idx,int prev,vector<vector<int>>&pairs){
     if(idx>=n){
         return 0;
