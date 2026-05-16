@@ -1,4 +1,4 @@
-//T.C-2^n-
+//T.C-O(2^n)
 //S.c-O(1)
 //Recusrion Approach-
 /*
@@ -23,6 +23,10 @@ int n;
     }
 };
 */
+//T.C-O(2^n)
+//S.c-O(n)
+//Recusrion +memoization Approach-
+/*
 class Solution {
 public:
 int n;
@@ -46,5 +50,26 @@ int n;
         memset(dp,-1,sizeof(dp));
         sort(pairs.begin(),pairs.end());
         return solve(0,-1,pairs);
+    }
+};
+*/
+class Solution {
+public:
+
+ 
+    int findLongestChain(vector<vector<int>>& pairs) {
+       int n=pairs.size();
+       vector<int>dp(n,1);
+        sort(pairs.begin(),pairs.end());
+        int result=1;
+        for(int i=0;i<n;i++){
+            for(int j=0;j<i;j++){
+                if(pairs[i][0]>pairs[j][1]){
+                    dp[i]=max(dp[i],dp[j]+1);
+                }
+                result=max(result,dp[i]);
+            }
+        }
+        return result;
     }
 };
