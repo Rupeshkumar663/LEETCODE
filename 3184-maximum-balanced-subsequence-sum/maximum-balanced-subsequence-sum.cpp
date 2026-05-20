@@ -93,29 +93,24 @@ public:
         long long temp=*max_element(nums.begin(),nums.end());
         if(temp<=0) 
         return temp;
-        map<long long,long long>mp;
-        long long result=0;
+        
+        map<int,long long>mp;
+        long long result=INT_MIN;
         for(int i=0;i<nums.size();i++){
-            long long key=1LL*nums[i]-i;
-            long long best=0;
-            auto it=mp.upper_bound(key);
-            if(it !=mp.begin()){
-                --it;
-                best=it->second;
-            }
-           long long curr=max(1LL*nums[i],best+nums[i]);
-            result=max(result,curr);
-            if(mp.count(key) && mp[key]>=curr)
-                continue;
-            mp[key]=curr;
-            auto nxt=mp.upper_bound(key);
-            while(nxt != mp.end() && nxt->second<=curr){
-                auto temp=nxt;
-                nxt++;
-                mp.erase(temp);
-            }
+            auto it=mp.upper_bound(nums[i]-i);
+            long long sum=nums[i];
+        if(it!=mp.begin()){
+            it--;
+            sum+=it->second;
         }
-        return result;
+        mp[nums[i]-i]=max(mp[nums[i]-i],sum);
+        it=mp.upper_bound(nums[i]-i);
+        while(it!=mp.end()  && it->second<=sum){
+            mp.erase(it++);
+        }
+        result=max(result,sum);
+        }
+      return result;
     }
 };
 
