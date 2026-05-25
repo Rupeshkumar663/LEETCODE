@@ -49,10 +49,12 @@ int solve(string &text1, string &text2,int i,int j){
        return solve(text1,text2,0,0);
     }
 };*/
+//Buttom-Up
+//T.C-O(m*n)
+//S.C-O(m*n)
 
 class Solution {
 public:
-
     int longestCommonSubsequence(string text1, string text2) {
        int  m=text1.size();
         int n=text2.size();
