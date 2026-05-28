@@ -34,80 +34,45 @@ public:
 */
 class Solution {
 public:
-
     int n;
     vector<int> nums;
-    
-    // dp[idx][prev+1] => maximum length
     int dp[1001][1001];
-
     int solve(int idx,int prev){
-
-        // base case
-        if(idx >= n){
+        if(idx>=n){
             return 0;
         }
-
-        // memoization
         if(dp[idx][prev+1] != -1){
             return dp[idx][prev+1];
         }
-
-        // skip
-        int notTake = solve(idx+1, prev);
-
-        // take
-        int take = 0;
-
-        if(prev == -1 || nums[idx] % nums[prev] == 0){
-
-            take = 1 + solve(idx+1, idx);
+        int notTake=solve(idx+1, prev);
+        int take=0;
+        if(prev==-1|| nums[idx]%nums[prev]==0){
+            take=1+solve(idx+1,idx);
         }
-
-        return dp[idx][prev+1] = max(take, notTake);
+        return dp[idx][prev+1]=max(take,notTake);
     }
-
-    vector<int> largestDivisibleSubset(vector<int>& arr) {
-
-        nums = arr;
-
-        sort(nums.begin(), nums.end());
-
-        n = nums.size();
-
-        memset(dp, -1, sizeof(dp));
-
+    vector<int> largestDivisibleSubset(vector<int>& arr){
+        nums=arr;
+        sort(nums.begin(),nums.end());
+        n=nums.size();
+        memset(dp,-1,sizeof(dp));
         solve(0,-1);
-
-        // subset build karna
-        vector<int> ans;
-
-        int idx = 0;
-        int prev = -1;
-
-        while(idx < n){
-
-            int take = 0;
-
-            if(prev == -1 || nums[idx] % nums[prev] == 0){
-
-                take = 1 + solve(idx+1, idx);
+        vector<int>ans;
+        int idx=0;
+        int prev=-1;
+        while(idx<n){
+            int take=0;
+            if(prev==-1 || nums[idx] % nums[prev]==0){
+                take=1+ solve(idx+1,idx);
             }
-
-            int notTake = solve(idx+1, prev);
-
-            // agar take better hai to include karo
-            if(take >= notTake &&
-               (prev == -1 || nums[idx] % nums[prev] == 0)){
-
+            int notTake=solve(idx+1,prev);
+            if(take>=notTake &&
+               (prev==-1 || nums[idx]%nums[prev]==0)){
                 ans.push_back(nums[idx]);
-
-                prev = idx;
+                prev=idx;
             }
-
             idx++;
         }
-
         return ans;
     }
 };
