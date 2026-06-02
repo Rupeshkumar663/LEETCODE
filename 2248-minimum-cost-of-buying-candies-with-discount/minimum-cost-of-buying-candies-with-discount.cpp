@@ -1,3 +1,6 @@
+//Greedy+sorting-------
+//T.C-O(nlogn)---------
+//S.C-O(1)-------------
 class Solution {
 public:
     int minimumCost(vector<int>& cost) {
