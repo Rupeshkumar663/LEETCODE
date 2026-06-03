@@ -19,6 +19,9 @@ public:
     }
 };
 */
+//T.c-O(n)
+//S.C-O(1)
+//optimal Approach----------------
 class Solution {
 public:
     int earliestFinishTime(vector<int>& landStartTime, vector<int>& landDuration, vector<int>& waterStartTime, vector<int>& waterDuration) {
