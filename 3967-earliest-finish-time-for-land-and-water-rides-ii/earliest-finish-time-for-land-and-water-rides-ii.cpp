@@ -34,8 +34,7 @@ public:
         }
         for(int j=0;j<m;j++){
             int temp=max(minland,waterStartTime[j]);
-            int dist=waterDuration[j];
-             result=min(result,temp+dist);
+             result=min(result,temp+waterDuration[j]);
         }
         int minwater=1e9;
          for(int i=0;i<m;i++){
@@ -43,8 +42,7 @@ public:
         }
         for(int j=0;j<n;j++){
             int temp=max(minwater,landStartTime[j]);
-            int dist=landDuration[j];
-             result=min(result,temp+dist);
+             result=min(result,temp+landDuration[j]);
         }
         return result;
     }
