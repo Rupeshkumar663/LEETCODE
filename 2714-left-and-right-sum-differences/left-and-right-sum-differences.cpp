@@ -1,5 +1,6 @@
 //T.C-O(n)
 //S.C-O(n)
+/*
 class Solution {
 public:
     vector<int> leftRightDifference(vector<int>& nums) {
@@ -15,6 +16,28 @@ public:
       nums.clear();
       for(int i=0;i<rightsum.size();i++){
           nums.push_back(abs(rightsum[i]-leftsum[i]));
+      }
+      return nums;
+    }
+};
+*/
+//T.C-O(n)
+//S.C-O(1)
+class Solution {
+public:
+    vector<int> leftRightDifference(vector<int>& nums) {
+      int n=nums.size();
+      int temp=0;
+      int sum=0;
+      for(int i=0;i<n;i++){
+        sum+=nums[i];
+      }
+      for(int i=n-1;i>=0;i--){
+        int var=nums[i];
+        int y=var+temp;
+        nums[i]=abs(sum-y);
+        sum-=(var+temp);
+        temp=var;
       }
       return nums;
     }
