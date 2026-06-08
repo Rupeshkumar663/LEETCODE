@@ -9,7 +9,6 @@ int solve(string &text1, string &text2,int i,int j){
         return 0;
     }
     if(text1[i]==text2[j]){
-        
         return 1+solve(text1,text2,i+1,j+1);
     } else{
         return max(solve(text1,text2,i+1,j),solve(text1,text2,i,j+1));
@@ -57,7 +56,7 @@ int solve(string &text1, string &text2,int i,int j){
 class Solution {
 public:
     int longestCommonSubsequence(string text1, string text2) {
-       int  m=text1.size();
+        int m=text1.size();
         int n=text2.size();
         vector<vector<int>>dp(m+1,vector<int>(n+1));
        for(int row=0;row<m+1;row++){
