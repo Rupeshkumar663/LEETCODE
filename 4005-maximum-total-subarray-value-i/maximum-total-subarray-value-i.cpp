@@ -14,6 +14,7 @@ public:
     }
 };
 */
+//T.C-O(N)
 class Solution {
 public:
     long long maxTotalValue(vector<int>& nums, int k) {
