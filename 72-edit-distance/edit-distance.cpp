@@ -1,4 +1,7 @@
 /*
+//T.C-O(3^m+n)
+//S.C-O(1)
+//Recursion
 class Solution {
 public:
 int m,n;
@@ -26,7 +29,9 @@ int solve(string word1, string word2,int i,int j){
 };
 */
 /*
-
+//T.C-O(3^m+n)
+//S.C-O(m*n)
+//Recursion+memoization
 class Solution {
 public:
 int m,n;
@@ -58,8 +63,9 @@ int solve(string word1, string word2,int i,int j){
        return solve(word1,word2,0,0);
     }
 };*/
-
-
+//T.C-O(3^m+n)
+//S.C-O(m*n)
+//Recursion+memoization
 class Solution {
 public:
 int m,n;
