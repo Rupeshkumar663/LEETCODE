@@ -66,6 +66,7 @@ int solve(string word1, string word2,int i,int j){
 //T.C-O(3^m+n)
 //S.C-O(m*n)
 //Recursion+memoization
+/*
 class Solution {
 public:
 int m,n;
@@ -95,5 +96,34 @@ int solve(string word1, string word2,int i,int j){
         n=word2.length();
         memset(dp,-1,sizeof(dp));
        return solve(word1,word2,m-1,n-1);
+    }
+};
+*/
+//T.C-O(m*n)
+//S.C-O(m*n)
+//Bottom-up Approach-----------
+
+class Solution {
+public:
+    int minDistance(string word1, string word2) {
+       int m=word1.length();
+       int n=word2.length();
+       vector<vector<int>>dp(m+1,vector<int>(n+1));
+       for(int i=0;i<m+1;i++){
+         for(int j=0;j<n+1;j++){
+            if(i==0 || j==0){
+                dp[i][j]=i+j;
+            }
+            else if(word1[i-1]==word2[j-1]){
+                dp[i][j]=dp[i-1][j-1];
+            }else{
+             int insert=dp[i][j-1];
+             int deletes=dp[i-1][j];
+             int replace=dp[i-1][j-1];
+            dp[i][j]=1+min({insert,deletes,replace});
+            }
+         }
+       }
+       return dp[m][n];
     }
 };
