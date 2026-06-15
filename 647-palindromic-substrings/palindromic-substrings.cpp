@@ -27,8 +27,8 @@ public:
 };
 */
 
-//T.C-O(n^3)---------
-//Brute force Approach---------
+//T.C-O(n^2)---------
+//Memoization Approach---------
 class Solution {
 public:
   int dp[1001][1001];
