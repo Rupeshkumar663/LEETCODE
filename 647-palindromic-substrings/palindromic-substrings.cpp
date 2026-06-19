@@ -1,6 +1,7 @@
 /*
 //T.C-O(n^3)---------
 //Brute force Approach---------
+*/
 class Solution {
 public:
    bool check(string &s,int i,int j){
@@ -11,7 +12,7 @@ public:
         return check(s,i+1,j-1);
     }
    return false; 
-   }
+  }
     int countSubstrings(string s) {
         int n=s.length();
         int count=0;
@@ -25,7 +26,7 @@ public:
         return count;
     }
 };
-*/
+/*
 
 //T.C-O(n^2)---------
 //Memoization Approach---------
@@ -58,3 +59,4 @@ public:
         return count;
     }
 };
+*/
