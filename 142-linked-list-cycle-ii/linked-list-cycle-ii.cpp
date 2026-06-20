@@ -7,7 +7,7 @@
  * };
  */
  //T.C-O(N)
- //S.C-O(1)
+ //S.C-O(N)
 class Solution {
 public:
     ListNode *detectCycle(ListNode *head) {
