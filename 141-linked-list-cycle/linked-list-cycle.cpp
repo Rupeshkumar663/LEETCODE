@@ -6,6 +6,8 @@
  *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
+ //T.C-O(N)
+ //S.C-O(1)
 class Solution {
 public:
     bool hasCycle(ListNode *head) {
