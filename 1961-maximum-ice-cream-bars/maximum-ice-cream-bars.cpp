@@ -24,7 +24,7 @@ int n;
     }
 };
 */
-//T.C-O(2^N)
+//T.C-O(nlogn)
 //S.C-O(1)
 //Recursion Approach-------
 class Solution {
