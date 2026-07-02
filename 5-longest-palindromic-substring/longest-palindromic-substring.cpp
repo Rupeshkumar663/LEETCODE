@@ -32,6 +32,7 @@ int n;
 };
 */
 
+/*
 class Solution {
 public:
 int n;
@@ -62,6 +63,41 @@ int n;
                     maxlength=j-i+1;
                     sp=i;
                 }
+            }
+        }
+      }  
+      return s.substr(sp,maxlength);
+    }
+};
+*/
+class Solution {
+public:
+int n;
+  
+    string longestPalindrome(string s) {
+      n=s.size();
+      int maxlength=1;
+      int sp=0;
+      vector<vector<bool>>dp(n,vector<bool>(n,false));
+       for(int i=0;i<n;i++)
+                dp[i][i]=true;
+      for(int i=n-1;i>=0;i--){
+        for(int j=i+1;j<n;j++){
+            if((s[i]==s[j]) && (j-i+1==2)){
+                dp[i][j]=true;
+                 if(maxlength<2){
+                  maxlength=2;
+                  sp=i;
+              }
+            }
+           else if(s[i]==s[j] && dp[i+1][j-1]==true){
+                dp[i][j]=true;
+                if(maxlength<j-i+1){
+                    maxlength=j-i+1;
+                    sp=i;
+                }
+            }else{
+                dp[i][j]=false;
             }
         }
       }  
