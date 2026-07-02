@@ -1,4 +1,7 @@
 /*
+//Time Complexity-O(n^3)
+//Space Complexity-O(n)
+//Recursion Approach----------------------
 class Solution {
 public:
 int n;
@@ -31,7 +34,9 @@ int n;
     }
 };
 */
-
+//Time Complexity-O(n*n)
+//Space Complexity-O(n*n)
+//Recursion+Memoization Approach----------------------
 /*
 class Solution {
 public:
@@ -70,6 +75,9 @@ int n;
     }
 };
 */
+//Time Complexity-O(n*n)
+//Space Complexity-O(n*n)
+//Bottom-up Approach----------------------
 class Solution {
 public:
 int n;
