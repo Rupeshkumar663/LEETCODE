@@ -16,6 +16,8 @@ public:
     }
 };
 */
+
+/*
 class Solution {
 public:
 int dp[501][501];
@@ -35,5 +37,23 @@ int dp[501][501];
         int n=s.size();
         memset(dp,-1,sizeof(dp));
        return solve(s,0,n-1);
+    }
+};
+*/
+class Solution {
+public:
+    int minInsertions(string s) {
+        int n=s.size();
+        vector<vector<int>>dp(n,vector<int>(n,0));
+        for(int i=n-1;i>=0;i--){
+            for(int j=i+1;j<n;j++){
+                if(s[i]==s[j]){
+                    dp[i][j]=dp[i+1][j-1];
+                }else{
+                    dp[i][j]=1+min(dp[i+1][j],dp[i][j-1]);
+                }
+            }
+        }
+        return dp[0][n-1];
     }
 };
