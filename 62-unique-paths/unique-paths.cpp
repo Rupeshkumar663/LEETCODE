@@ -1,3 +1,5 @@
+//Time Complexity: O(2^(m+n))
+//Space Complexity: O(1)
 /*
 class Solution {
 public:
@@ -16,6 +18,8 @@ public:
        return solve(0,0,m,n);
     }
 };*/
+//Time Complexity: O(m*n)
+//Space Complexity: O(m*n)
 class Solution {
 public:
 
