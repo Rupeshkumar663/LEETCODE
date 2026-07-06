@@ -17,17 +17,17 @@ public:
     if(root==NULL){
         return;
     }
-    result.push_back(root->val);
-    if(root->left){
+    result.push_back(root->val);//push root in result
+    if(root->left){//if satisfied this condtion then moves toward root left
         preorder(root->left,result);
     }
-    if(root->right){
+    if(root->right){//if satisfied this condtion then moves toward root right
         preorder(root->right,result);
      }
    }
     vector<int> preorderTraversal(TreeNode* root) {
-        vector<int>result;
-        preorder(root,result);
+        vector<int>result;//
+        preorder(root,result);//preorder order traversal function
         return result;
     }
 };
