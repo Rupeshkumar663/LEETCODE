@@ -9,30 +9,25 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+ //Time Compelxity: O(n)
+ //Space Complexity: O(n) 
 class Solution {
 public:
+   void preorder(TreeNode* root,vector<int>&result){
+    if(root==NULL){
+        return;
+    }
+    result.push_back(root->val);
+    if(root->left){
+        preorder(root->left,result);
+    }
+    if(root->right){
+        preorder(root->right,result);
+     }
+   }
     vector<int> preorderTraversal(TreeNode* root) {
         vector<int>result;
-        TreeNode*curr=root;
-        while(curr!=NULL){
-            if(curr->left==NULL){
-                result.push_back(curr->val);
-                curr=curr->right;
-            } else{
-                TreeNode* leftchild=curr->left;
-                while(leftchild->right!=NULL && leftchild->right!=curr ){
-                    leftchild=leftchild->right;
-                }
-                if(leftchild->right==NULL){
-                    result.push_back(curr->val);
-                   leftchild->right=curr;
-                   curr=curr->left;
-                } else{
-                    leftchild->right=NULL;
-                    curr=curr->right;
-                }
-            }
-        }
-       return result;
+        preorder(root,result);
+        return result;
     }
 };
