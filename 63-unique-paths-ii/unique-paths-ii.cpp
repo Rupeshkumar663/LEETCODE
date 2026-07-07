@@ -26,9 +26,9 @@ public:
     }
 };
 */
-//Time COmplexity: O(2^(m+n))
-//Space Complexity: O(1)
-//Recursion-----------------
+//Time COmplexity: O(m*n)
+//Space Complexity: O(m*n)
+//Recursion+Memoization-----------------
 class Solution {
 public:
  int m,n;
