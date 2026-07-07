@@ -62,7 +62,7 @@ public:
 
 //Time COmplexity: O(m*n)
 //Space Complexity: O(m*n)
-//Recursion+Memoization-----------------
+//Buttom-Up Approach-----------------
 class Solution {
 public:
     int uniquePathsWithObstacles(vector<vector<int>>& obstacleGrid) {
