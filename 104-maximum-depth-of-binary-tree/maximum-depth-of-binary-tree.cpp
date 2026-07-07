@@ -9,6 +9,8 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+ //Time Complexity :O(n)
+ //Space Complexity: O(1)
 class Solution {
 public:
    int Height(TreeNode* root){
@@ -20,6 +22,9 @@ public:
      return 1+max(lh,rh);
    }
     int maxDepth(TreeNode* root) {
-        return Height(root);
+        if(root==NULL){
+            return 0;
+        }
+      return   Height(root);
     }
 };
