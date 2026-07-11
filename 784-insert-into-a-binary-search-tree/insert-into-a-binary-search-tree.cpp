@@ -23,6 +23,7 @@ public:
     }
 };
 */
+/*
 class Solution {
 public:
     TreeNode* insertIntoBST(TreeNode* root, int val) {
@@ -36,5 +37,24 @@ public:
            root->right=insertIntoBST(root->right,val);
         } 
        return root;
+    }
+};
+*/
+class Solution {
+public:
+  TreeNode* Insert(TreeNode* root, int val){
+    if(root==NULL){
+        return root=new TreeNode(val);
+    }
+    if(root->val>val){
+        root->left=Insert(root->left,val);
+    }
+    if(root->val<val){
+        root->right=Insert(root->right,val);
+    }
+    return root;
+  }
+    TreeNode* insertIntoBST(TreeNode* root, int val) {
+      return  Insert(root,val);
     }
 };
