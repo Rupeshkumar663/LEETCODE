@@ -26,14 +26,15 @@ public:
     }
 };
 */
-
+//Time Complexity: O(n)
+//Space Complexity: O(1)
 class Solution {
 public:
  bool solve(TreeNode* p, TreeNode* q){
-    if(p==NULL && q==NULL){
+    if(p==NULL && q==NULL){//both null return true
         return true;
     }
-    if(p==NULL || q==NULL){
+    if(p==NULL || q==NULL){//if any one null return false
         return false;
     }
     if((p->val==q->val)&& p->left==NULL && p->right==NULL && q->left==NULL && q->right==NULL){
@@ -45,6 +46,6 @@ public:
     return solve(p->left,q->left) && solve(p->right,q->right);
  }
     bool isSameTree(TreeNode* p, TreeNode* q) {
-      return  solve(p,q);
+      return  solve(p,q);//traverse all nodes of both tree Time Complexity: O(n)
     }
 };
