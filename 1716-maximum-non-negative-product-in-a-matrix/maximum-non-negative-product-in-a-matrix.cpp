@@ -1,3 +1,6 @@
+//Time Complexity: O(2^(m*n))
+//Space Complexity: O(1)
+//Recursion-----------
 /*
 class Solution {
 public:
@@ -36,6 +39,9 @@ int m,n;
     }
 };
 */
+//Time Complexity: O(m*n)
+//Space Complexity: O(m*n)
+//Recursion+Memoization-----------
 class Solution {
 public:
 int m,n;
