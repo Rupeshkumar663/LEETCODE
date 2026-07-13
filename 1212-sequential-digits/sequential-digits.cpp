@@ -1,3 +1,5 @@
+//Time Complexity: O(nlong(n))
+//Space Complexity: O(n)
 class Solution {
 public:
     void solve(int num, int low, int high, vector<int>& result) {
