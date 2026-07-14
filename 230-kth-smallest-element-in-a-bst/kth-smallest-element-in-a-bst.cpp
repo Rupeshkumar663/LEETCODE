@@ -69,6 +69,8 @@ public:
     }
 };*/
 
+//Time Complexity: O(n)
+//Space Complexity: O(1)
 class Solution {
 public:
      void Inorder(TreeNode* root,int &k,int &result,int &count){
