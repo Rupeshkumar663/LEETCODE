@@ -46,8 +46,9 @@ public:
         return Inorder(root,k);
     }
 };*/
-
-class Solution {
+//Time Complexity: O(n)
+//Space Complexity: O(n)
+/*class Solution {
 public:
      void Inorder(TreeNode* root,vector<int>&result){
         if(root==NULL){
@@ -65,5 +66,33 @@ public:
         vector<int>result;
         Inorder(root,result);
         return result[k-1];
+    }
+};*/
+
+class Solution {
+public:
+     void Inorder(TreeNode* root,int &k,int &result,int &count){
+        if(root==NULL){
+            return ;
+        }
+        if(root->left){
+            Inorder(root->left,k,result,count);
+        }
+             count++;
+            if(count==k){
+                result=root->val;
+                return;
+            }
+    
+        if(root->right){
+            Inorder(root->right,k,result,count);
+        }
+     }
+    int kthSmallest(TreeNode* root, int k){
+        int result=0;
+        int count=0;
+        Inorder(root,k,result,count);
+        return result;
+       
     }
 };
