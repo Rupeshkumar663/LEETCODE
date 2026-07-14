@@ -134,7 +134,7 @@ public:
     }
 };
 */
-//Time Complexity: O(n*n)
+/*//Time Complexity: O(n*n)
 //Space Complexity: O(n*n)
 class Solution {
 public:
@@ -164,6 +164,33 @@ public:
         if(!visited[i]){
             count++;
             DFS(adj,i,visited);// DFS Approach Time Compexity: O(V+E)=O(n)
+        }
+       }
+       return count;
+    }
+};*/
+
+//Time Complexity: O(n*n)
+//Space Complexity: O(n*n)
+class Solution {
+public:
+  void DFS(vector<vector<int>>& isConnected,int u,vector<bool>&visited){
+    visited[u]=true;
+     for(int v=0;v<isConnected.size();v++){
+        if(isConnected[u][v]==1 && !visited[v]){
+            DFS(isConnected,v,visited);
+        }
+     }
+   }
+    int findCircleNum(vector<vector<int>>& isConnected) {
+       int n=isConnected.size();
+       vector<bool>visited(n,false);
+       int count=0;
+       //overall Time Complexity: O(n*n)
+       for(int i=0;i<n;i++){//Time Complexity: O(n)
+        if(!visited[i]){
+            count++;
+            DFS(isConnected,i,visited);// DFS Approach Time Compexity: O(V+E)=O(n)
         }
        }
        return count;
