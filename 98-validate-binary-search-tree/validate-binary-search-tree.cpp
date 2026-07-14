@@ -12,7 +12,8 @@ public:
         return check(root,LLONG_MIN,LLONG_MAX);
     }
 };*/
-
+//Time Complexity: O(n)
+//Space COmplexity: O(1)
 class Solution {
 public:
    void Inorder(TreeNode*root,long long &prev,bool &result){
