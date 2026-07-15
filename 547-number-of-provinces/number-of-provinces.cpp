@@ -207,8 +207,8 @@ void DFS(unordered_map<int,vector<int>>&adj,int u,vector<bool> &visited){
     }
 };*/
 
-//Time Complexity: O(n*n)
-//Space Complexity: O(n*n)
+/*//Time Complexity: O(n*n)
+//Space Complexity: O(n)
 class Solution {
 public:
 void DFS(vector<vector<int>>& isConnected,int u,vector<bool> &visited,int n){
@@ -220,15 +220,58 @@ void DFS(vector<vector<int>>& isConnected,int u,vector<bool> &visited,int n){
     }
 }
   int findCircleNum(vector<vector<int>>& isConnected) {
-    int n=isConnected.size();
-       vector<bool>visited(n,false);
-       int count=0;
-       for(int i=0;i<n;i++){
-        if(!visited[i]){
+    int n=isConnected.size();//size of Nodes
+       vector<bool>visited(n,false);//Creating a vector to check visiyed or not
+       int count=0;//it counts number of provinces
+       //Total Time Complexity: O(n)*O(n)=O(n*n)
+       for(int i=0;i<n;i++){//Time Complexity: O(n)
+        if(!visited[i]){//is condition satified then proceed it.
             count++;
-            DFS(isConnected,i,visited,n);
+            DFS(isConnected,i,visited,n);//using DFS for all non visiting element. and Time Complexity: O(V+E)=overall O(n)
         }
        }
        return count;
+    }
+};*/
+
+//Time Complexity: O(n*n)
+//Space Complexity: O(n)
+class Solution {
+public:
+ void BFS(unordered_map<int,vector<int>>&adj,int u,vector<bool>& visited){
+    queue<int>q;
+    q.push(u);
+    visited[u]=true;
+    while(!q.empty()){
+        int temp=q.front();
+        q.pop();
+         for(int v:adj[temp]){
+            if(!visited[v]){
+                q.push(v);
+                visited[v]=true;
+            }
+         }
+    }
+ }
+  int findCircleNum(vector<vector<int>>& isConnected) {
+    int n=isConnected.size();
+     unordered_map<int,vector<int>>adj;
+     vector<bool>visited(n,false);
+     for(int i=0;i<n;i++){
+        for(int j=0;j<n;j++){
+            if(isConnected[i][j]==1){
+                adj[i].push_back(j);
+                adj[j].push_back(i);
+            }
+        }
+      }
+      int count=0;
+      for(int i=0;i<n;i++){
+        if(!visited[i]){
+            count++;
+            BFS(adj,i,visited);
+        }
+      }
+      return count;
     }
 };
