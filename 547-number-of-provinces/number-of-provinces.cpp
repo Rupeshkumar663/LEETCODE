@@ -170,6 +170,7 @@ public:
     }
 };*/
 
+/*
 //Time Complexity: O(n*n)
 //Space Complexity: O(n*n)
 class Solution {
@@ -200,6 +201,32 @@ void DFS(unordered_map<int,vector<int>>&adj,int u,vector<bool> &visited){
         if(!visited[i]){
             count++;
             DFS(adj,i,visited);
+        }
+       }
+       return count;
+    }
+};*/
+
+//Time Complexity: O(n*n)
+//Space Complexity: O(n*n)
+class Solution {
+public:
+void DFS(vector<vector<int>>& isConnected,int u,vector<bool> &visited,int n){
+    visited[u]=true;
+    for(int v=0;v<n;v++){
+        if(!visited[v] && isConnected[u][v]==1){
+            DFS(isConnected,v,visited,n);
+        }
+    }
+}
+  int findCircleNum(vector<vector<int>>& isConnected) {
+    int n=isConnected.size();
+       vector<bool>visited(n,false);
+       int count=0;
+       for(int i=0;i<n;i++){
+        if(!visited[i]){
+            count++;
+            DFS(isConnected,i,visited,n);
         }
        }
        return count;
