@@ -32,6 +32,8 @@ public:
     }
 };*/
 
+//Time Complexity: O(nlogn)
+//Space COmpleixty: O(1)
 class Solution {
 public:
     TreeNode* createBst(TreeNode* root,int value){
@@ -47,8 +49,8 @@ public:
     }
     TreeNode* bstFromPreorder(vector<int>& preorder) {
       TreeNode *root=NULL;
-      for(int i=0;i<preorder.size();i++){
-        root=createBst(root,preorder[i]);
+      for(int i=0;i<preorder.size();i++){//Time Complexity: O(n)
+        root=createBst(root,preorder[i]);////Time Complexity: O(logn)
       }
       return root;
     }
