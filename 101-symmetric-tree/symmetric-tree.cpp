@@ -15,18 +15,20 @@ public:
         if(p==NULL && q==NULL){
             return true;
         }
-       else if(p==NULL || q==NULL){
+        
+        if(p==NULL || q==NULL){
             return false;
         }
-        else if(p->val!=q->val){
+        if(p->val!=q->val){
             return false;
         }
-       return solve(p->left,q->right) &&solve(p->right,q->left);
+      return solve(p->left,q->right) && solve(p->right,q->left);
     }
-    bool isSymmetric(TreeNode* root) {
-        if(root==NULL){
-            return true;
-        }
+
+     bool isSymmetric(TreeNode* root) {
+       if(root==NULL){
+        return true;
+       }
        return solve(root->left,root->right);
     }
 };
