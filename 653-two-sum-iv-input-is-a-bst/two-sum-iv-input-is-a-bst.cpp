@@ -9,6 +9,7 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+ /*
  //Time Complexity:O(n)*O(n)=O(n*n)
  //Space Complexity: O(n)
 class Solution {
@@ -37,5 +38,35 @@ public:
         }
      }
      return false;
+    }
+};
+ */
+
+ //Time Complexity:O(n)*O(n)=O(n*n)
+ //Space Complexity: O(n)
+class Solution {
+public:
+   void solve(TreeNode* root,unordered_set<int>&s,int &k,bool &result){
+    if(root==NULL){
+        return ;
+    }
+    if(root->left){
+        solve(root->left,s,k,result);
+    }
+    int temp=k-root->val;
+    if(s.find(temp)!=s.end()){
+        result=true;
+        return;
+    }
+    s.insert(root->val);
+    if(root->right){
+        solve(root->right,s,k,result);
+    }
+   }
+    bool findTarget(TreeNode* root, int k) {
+     bool result=false;
+     unordered_set<int>s;
+     solve(root,s,k,result); 
+     return result;
     }
 };
