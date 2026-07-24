@@ -9,18 +9,22 @@
  */
 class Solution {
 public:
+  TreeNode* lowestCommon(TreeNode* root, TreeNode* p, TreeNode* q){
+    if(root==NULL){
+        return NULL;
+        }
+    if(root->val==p->val || root->val==q->val){
+        return root;
+    }
+    TreeNode* left=lowestCommon(root->left,p,q);
+    TreeNode* right=lowestCommon(root->right,p,q);
+    if(left && right)
+       return root;
+    if(left)
+     return left;
+    return right;
+  }
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
-           if(!root)
-              return root ;
-            if(root==p || root==q)
-             return root;
-            TreeNode*leftNode=lowestCommonAncestor(root->left,p,q);
-            TreeNode*rightNode=lowestCommonAncestor(root->right,p,q);
-            if(leftNode!=NULL && rightNode!=NULL){
-                return root;
-            }
-            if(leftNode!=NULL)
-             return leftNode;
-      return rightNode;
+        return lowestCommon(root,p,q);
     }
 };
