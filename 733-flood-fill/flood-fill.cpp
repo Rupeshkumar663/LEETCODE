@@ -26,37 +26,23 @@ void DFS(vector<vector<int>>& image, int i, int j,int&n,int &m ,int color,int st
 //APPROACH-2 BY BFS------------------------------------------
 class Solution {
 public:
-   int m,n;
-  void BFS(vector<vector<int>>& image, int sr, int sc, int color,int startingcolor){
-    queue<vector<int>>q;
-    q.push({sr,sc});
-    image[sr][sc]=color;
-    int dx[4]={0,0,-1,1};
-    int dy[4]={-1,1,0,0};
-    while(!q.empty()){
-        vector<int>temp=q.front();
-        q.pop();
-        int x=temp[0];
-        int y=temp[1];
-
-        for(int d=0;d<4;d++){
-                int nx=x+dx[d];
-                int ny=y+dy[d];
-                if(nx>=0 && ny>=0 && nx<m && ny<n && image[nx][ny]==startingcolor){
-                    image[nx][ny]=color;
-                    q.push({nx,ny});
-                }
-        }
-    }
-  }
+  int m,n;
+  vector<vector<int>>dir={{-1,0},{1,0},{0,-1},{0,1}};
+void DFS(vector<vector<int>>& image, int i, int j, int &color,int startingcolor){
+   if(i<0 || i>=m || j<0 || j>=n || image[i][j]!=startingcolor){
+    return;
+   }
+   image[i][j]=color;
+   for(auto idx:dir){
+      DFS(image,i+idx[0],j+idx[1],color,startingcolor);
+   }
+}
     vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int color) {
         m=image.size();
         n=image[0].size();
-        if(image[sr][sc]==color){
-            return image;
-        } else{
-            BFS(image,sr,sc,color,image[sr][sc]);
-        }
-    return image;
+        if (image[sr][sc] == color)
+        return image;
+      DFS(image,sr,sc,color,image[sr][sc]);
+      return image;
     }
 };
