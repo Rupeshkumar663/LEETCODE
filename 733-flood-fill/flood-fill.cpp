@@ -23,7 +23,9 @@ void DFS(vector<vector<int>>& image, int i, int j,int&n,int &m ,int color,int st
     return image;
     }
 };*/
-//APPROACH-2 BY BFS------------------------------------------
+ //Time Complexity: O(V+E)
+ //Space Complexity: O(1)
+//APPROACH-2 BY DFS------------------------------------------
 class Solution {
 public:
   int m,n;
@@ -42,7 +44,7 @@ void DFS(vector<vector<int>>& image, int i, int j, int &color,int startingcolor)
         n=image[0].size();
         if (image[sr][sc] == color)
         return image;
-      DFS(image,sr,sc,color,image[sr][sc]);
+        DFS(image,sr,sc,color,image[sr][sc]);
       return image;
     }
 };
