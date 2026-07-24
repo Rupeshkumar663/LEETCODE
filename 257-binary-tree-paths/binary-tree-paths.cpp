@@ -9,6 +9,8 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+ //Time Complexity: O(n)
+ //Space Complexity:O(n)
 class Solution {
 public:
  void solve(TreeNode* root,vector<string>&result,string s){
@@ -32,7 +34,8 @@ public:
  }
     vector<string> binaryTreePaths(TreeNode* root) {
         vector<string>result;
-        solve(root,result,"");
+        //using Tree Traversal
+        solve(root,result,"");//Time Complexity: O(n)
         return result;
     }
 };
