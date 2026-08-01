@@ -20,7 +20,7 @@ public:
 };*/
 
 
-//Time Complexity:O(n)*O(k)=O(n)
+//Time Complexity: O(n)
 //Space Complexity: O(n)
 //Sliding Window Approach-------------------
 class Solution {
