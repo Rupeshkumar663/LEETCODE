@@ -1,4 +1,4 @@
-//Time Complexity-O(nlogn)
+/*//Time Complexity-O(nlogn)
 //Space Complexity-O(1)
 //Greedy Approach-------------
 class Solution {
@@ -21,6 +21,32 @@ public:
             break;
          }
           
+       }
+       return count;
+    }
+};*/
+
+//Time Complexity-O(nlogn)
+//Space Complexity-O(1)
+//Greedy Approach-------------
+class Solution {
+public:
+    int findContentChildren(vector<int>& g, vector<int>& s) {
+       int n=s.size();
+       int m=g.size();
+       int count=0;
+       sort(s.begin(),s.end());
+       sort(g.begin(),g.end());
+       int i=0;
+       for(int j=0;j<n;j++){
+        if(i<m){
+          if(s[j]>=g[i]){
+            i++;
+            count++;
+          }
+        }else{
+            break;
+        }
        }
        return count;
     }
