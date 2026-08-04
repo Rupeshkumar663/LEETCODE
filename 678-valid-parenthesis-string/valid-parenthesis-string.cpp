@@ -1,3 +1,6 @@
+//Time COmplexity: O(n)
+//Space Complexity:O(1)
+//by Greedy Approach-----------------
 class Solution {
 public:
     bool checkValidString(string s) {
