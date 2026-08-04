@@ -1,3 +1,6 @@
+//Time Complexity: O(n)
+//Space Complexity: O(1)
+//Sliding Window Approach------
 class Solution {
 public:
     int numOfSubarrays(vector<int>& arr, int k, int threshold) {
