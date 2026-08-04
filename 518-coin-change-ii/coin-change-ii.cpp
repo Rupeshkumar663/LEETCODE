@@ -67,9 +67,17 @@ int dp[301][5001];
     int take=0;
     if(amount>=coins[i]){
         take=solve(i,amount-coins[i],coins);
+        
     }
+    /*int take=0;
+    if(j>=coins[i]){
+        take=dp[i][j-coins[i]];
+        
+    }*/
     int skip=solve(i-1,amount,coins);
     return dp[i][amount]=skip+take;
+    /* int skip=dp[i-1],[j];
+    dp[i][j]=skip+take;*/
  } 
     int change(int amount, vector<int>& coins) {
         int n=coins.size();
