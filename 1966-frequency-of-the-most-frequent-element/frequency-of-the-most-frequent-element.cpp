@@ -20,6 +20,10 @@ public:
     }
 };*/
 
+
+//Time Complexity: O(n*logn)
+//Space COmplexity: O(1)
+//Sliding Window Approach----------
 class Solution {
 public:
     int maxFrequency(vector<int>& nums, int k) {
