@@ -20,8 +20,8 @@ public:
     }
 };*/
 
-//Time COmplexity: O(2^n)
-//Space Complexity: O(1)
+//Time COmplexity: O(n*n)
+//Space Complexity: O(n*n)
 //By Recursion +Memoization Approach------------
 class Solution {
 public:
