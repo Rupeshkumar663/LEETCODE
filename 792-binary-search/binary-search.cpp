@@ -1,3 +1,6 @@
+//Time Complexity: O(logn)
+//Space COmplexity: O(1)
+//Optimal Solution by Binary Search Appproach------------
 class Solution {
 public:
     int search(vector<int>& nums, int target) {
