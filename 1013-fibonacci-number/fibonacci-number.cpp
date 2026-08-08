@@ -1,4 +1,4 @@
-//O(2^n)
+/*//O(2^n)
 //Recursion
 /*
 class Solution {
@@ -49,7 +49,7 @@ public:
     return dp[n];
     }
 };
-*/
+
 //T.C-O(n)
 //S.C-O(1)
 class Solution {
@@ -66,5 +66,16 @@ public:
          b=c;
        }
        return c;
+    }
+};*/
+
+
+class Solution {
+public:
+    int fib(int n) {
+        if(n==0 || n==1){
+            return n;
+        }
+      return fib(n-1)+fib(n-2);
     }
 };
