@@ -32,7 +32,7 @@ public:
         return result;
     }
 };
-*/
+
 //APPROACH-2 BY USING DFS-----------------------------------------
 class Solution {
 public:
@@ -96,6 +96,59 @@ public:
                     result++;
             }
         }
+        return result;
+    }
+};*/
+
+class Solution {
+public:
+  int m,n;
+    int numEnclaves(vector<vector<int>>& grid) {
+        m=grid.size();
+        n=grid[0].size();
+        queue<pair<int,int>>q;
+        for(int i=0;i<m;i++){
+            if(grid[i][0]==1){
+                q.push({i,0});
+                grid[i][0]=0;
+            }
+            if(grid[i][n-1]==1){
+                q.push({i,n-1});
+                grid[i][n-1]=0;
+            }
+        }
+        for(int j=1;j<n-1;j++){
+            if(grid[0][j]==1){
+                q.push({0,j});
+                grid[0][j]=0;
+            }
+            if(grid[m-1][j]==1){
+                q.push({m-1,j});
+                grid[m-1][j]=0;
+            }
+        }
+        vector<vector<int>>direction={{0,1},{0,-1},{1,0},{-1,0}};
+        while(!q.empty()){
+             pair<int,int>temp=q.front();
+             q.pop();
+             int i=temp.first;
+             int j=temp.second;
+            for(auto dir:direction){
+                int x=dir[0]+i;
+                int y=dir[1]+j;
+                if(x>=0 && x<m && y>=0 && y<n && grid[x][y]==1){
+                   q.push({x,y});
+                   grid[x][y]=0;
+                }
+            }
+         }
+         int result=0;
+         for(int i=0;i<m;i++){
+            for(int j=0;j<n;j++){
+                if(grid[i][j]==1)
+                    result++;
+            }
+         }
         return result;
     }
 };
