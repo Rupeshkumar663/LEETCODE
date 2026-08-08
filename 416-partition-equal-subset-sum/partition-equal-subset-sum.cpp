@@ -112,8 +112,8 @@ int dp[201][100001];
 
 //Time Complexity: O(2^n)
 //Space Complexity: O(1)
-//Recursion +Memoization Approach--------------------
-//Move Right->Left
+//Tabulation/Bottom-Up Approach--------------------
+
 class Solution {
 public:
 
