@@ -47,7 +47,7 @@ public:
 };
 
 */
-//Time Complexity: O(m*n)
+/*//Time Complexity: O(m*n)
 //Space Complexity: O(m*n)
 //Buttom-Up------------------
 class Solution {
@@ -67,6 +67,55 @@ public:
             }
          }
          return dp[m-1][n-1];
+    }
+};
+
+
+//Time Complexity: O(m*n)
+//Space Complexity: O(m*n)
+//Buttom-Up------------------
+class Solution {
+public:
+  int Solve(int i,int j,int &m,int &n){
+    if(i==m-1 && j==n-1){
+        return 1;
+    }
+    if(i==m || j==n){
+        return 0;
+    }
+    int right=Solve(i,j+1,m,n);
+    int down=Solve(i+1,j,m,n);
+    return right+down;
+  }
+    int uniquePaths(int m, int n) {
+        return Solve(0,0,m,n);
+    }
+};
+*/
+
+//Time Complexity: O(m*n)
+//Space Complexity: O(m*n)
+//Buttom-Up------------------
+class Solution {
+public:
+ int dp[101][101];
+  int Solve(int i,int j,int &m,int &n){
+    if(i==m-1 && j==n-1){
+        return 1;
+    }
+    if(i==m || j==n){
+        return 0;
+    }
+    if(dp[i][j]!=-1){
+        return dp[i][j];
+    }
+    int right=Solve(i,j+1,m,n);
+    int down=Solve(i+1,j,m,n);
+    return dp[i][j]=right+down;
+  }
+    int uniquePaths(int m, int n) {
+        memset(dp,-1,sizeof(dp));
+        return Solve(0,0,m,n);
     }
 };
 
