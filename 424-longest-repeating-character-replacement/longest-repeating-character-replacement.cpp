@@ -19,7 +19,8 @@ public:
     }
 };*/
 
-
+//Time Complexity: O(n)
+//sliding Window Approach---------------
 class Solution {
 public:
     int characterReplacement(string s, int k) {
