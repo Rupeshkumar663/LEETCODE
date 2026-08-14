@@ -143,7 +143,7 @@ int dp[46];
 */
 //Time COmplexity: O(n)
 //Space COmplexity: O(n)
-//Recursion +Memoization Approach---------
+//Bottom-Up Approach---------
 class Solution {
 public: 
 
