@@ -22,8 +22,8 @@ public:
 
 //Time Complexity: O(n)
 //Space Complexity: O(n)
-//Sliding Window Approach-------------------
-class Solution {
+//Optimal Sliding Window Approach-------------------
+/*class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
         int n=s.size();
@@ -42,5 +42,27 @@ public:
           j++;
       }
       return count;
+    }
+};*/
+
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+      int n=s.size();
+      unordered_map<char,int>ss;
+      int maxi=0;
+      int i=0;
+      int j=0;
+      while(j<n){
+       if(ss.find(s[j])!=ss.end()){
+            if(ss[s[j]]>=i){
+                i=ss[s[j]]+1;
+            }
+        }
+        ss[s[j]]=j;
+        maxi=max(maxi,j-i+1);
+        j++;
+      }
+      return maxi;
     }
 };
