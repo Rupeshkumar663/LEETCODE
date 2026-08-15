@@ -1,3 +1,6 @@
+//TIme Complexity: O(n)
+//Space Complexity: O(n)
+//Bottom-Up Approach--------------
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
