@@ -64,7 +64,9 @@ public:
        return dp[n];
     }
 };
-*/
+
+//T.c-O(n)
+//s.c-O(1)
 class Solution {
 public:
     int rob(vector<int>& nums) {
@@ -77,8 +79,51 @@ public:
          c=max(c,b);
          a=b;
          b=c;
-         
        }
        return b;
+    }
+};
+
+//Time Complexity: O(2^n)
+//Space Complexity: O(1)
+//Recursion Approach-------------
+class Solution {
+public:
+   int n;
+   int solve(int i,int sum,vector<int>&nums){
+     if(i>=n){
+        return sum;
+     }
+     int take=solve(i+2,sum+nums[i],nums);
+     int skip=solve(i+1,sum,nums);
+     return max(take,skip);
+   }
+    int rob(vector<int>& nums) {
+      n=nums.size();
+     return solve(0,0,nums);
+    }
+};
+*/
+//Time Complexity: O(2^n)
+//Space Complexity: O(1)
+//Recursion Approach-------------
+class Solution {
+public:
+   int n;
+   int dp[101];
+   int solve(int i,vector<int>&nums){
+     if(i>=n){
+        return 0;
+     }
+     if(dp[i]!=-1)
+       return dp[i];
+     int take=nums[i]+solve(i+2,nums);
+     int skip=solve(i+1,nums);
+     return dp[i]=max(take,skip);
+   }
+    int rob(vector<int>& nums) {
+      n=nums.size();
+      memset(dp,-1,sizeof(dp));
+     return solve(0,nums);
     }
 };
