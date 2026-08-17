@@ -13,8 +13,7 @@ int dp[23][2][401];
     int limit=tight?s[index]-'0':9;
     for(int d=0;d<=limit;d++){
         bool newTight=tight && (d==limit);
-       ans = (ans + f(index + 1, newTight, sum + d,
-               min_sum, max_sum, s)) % MOD;
+       ans=(ans+f(index+1,newTight,sum+d,min_sum,max_sum,s))%MOD;
     }
     return dp[index][tight][sum]=ans;
   }
