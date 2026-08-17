@@ -1,3 +1,8 @@
+//D=Number of Digits.
+//S=(0 to max_sum)
+//Time Complexity:O(D*S)
+//Space Complexity: O(D*S)
+//Recursion + Memoization Approach------------
 class Solution {
 public:
 int MOD=1e9+7;
