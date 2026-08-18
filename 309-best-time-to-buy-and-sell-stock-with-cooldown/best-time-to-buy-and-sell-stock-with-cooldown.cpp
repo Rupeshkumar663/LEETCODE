@@ -27,7 +27,7 @@ public:
     }
 };*/
 
-//Time COmplexity: O(n)
+/*//Time COmplexity: O(n)
 //SPace COmplexity: O(n)
 //Recursion + Memoization Approach------------
 class Solution {
@@ -58,5 +58,30 @@ public:
      n=prices.size();
      memset(dp,-1,sizeof(dp));
      return solve(0,true,prices);
+    }
+};*/
+
+//Time COmplexity: O(n)
+//SPace COmplexity: O(n)
+//Recursion + Memoization Approach------------
+class Solution {
+public:
+ 
+    int maxProfit(vector<int>& prices) {
+     int  n=prices.size();
+      if(n<=1)
+            return 0;
+     vector<int>dp(n,0);
+     dp[0]=0;
+     dp[1]=max(0,prices[1]-prices[0]);
+     for(int i=2;i<n;i++){
+        dp[i]=dp[i-1];
+       for(int j=0;j<i;j++){
+          int prev=(j>=2)?dp[j-2]:0;
+         dp[i]=max(dp[i],prices[i]-prices[j]+prev);
+       }
+        
+     }
+     return dp[n-1];
     }
 };
