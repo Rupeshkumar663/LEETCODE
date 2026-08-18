@@ -74,8 +74,6 @@ public:
          return result;
     }
 };
-*/
-
 
 class Solution {
 public:
@@ -101,4 +99,31 @@ int dp[2501][2501];
        return Solve(0,-1,nums);
     }
 };
+
+
+*/
+
+class Solution {
+public:
+
+    int lengthOfLIS(vector<int>& nums) {
+      int n=nums.size();
+      if(n<=1){
+        return n;
+      }
+      vector<int>dp(n,1);
+      int result=1;
+      for(int i=1;i<n;i++){
+        for(int j=0;j<i;j++){
+            if(nums[i]>nums[j]){
+            dp[i]=max(dp[i],dp[j]+1);
+            }
+            result=max(dp[i],result);
+        }
+      }
+      return result;
+    }
+};
+
+
 
