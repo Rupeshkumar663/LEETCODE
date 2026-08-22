@@ -125,8 +125,8 @@ public:
     }
 };
 
-//Time COmplexity: O(2^n)
-//Space COmplexity: O(1)
+//Time COmplexity: O(m*n)
+//Space COmplexity: O(m*n)
 //Recursion + Memoization Approach----------
 //Left to Right Move------------------------
 class Solution {
@@ -152,10 +152,9 @@ int Solve(int i,int j,string &text1, string &text2){
       return Solve(0,0,text1,text2);
     }
 };
-*/
 
-//Time COmplexity: O(2^n)
-//Space COmplexity: O(1)
+//Time COmplexity: O(m*n)
+//Space COmplexity: O(m*n)
 //Recursion + Memoization Approach----------
 //Right to Left Move------------------------
 class Solution {
@@ -181,5 +180,27 @@ int Solve(int i,int j,string &text1, string &text2){
         int n=text2.size();
         memset(dp,-1,sizeof(dp));
       return Solve(m-1,n-1,text1,text2);
+    }
+};
+*/
+
+
+class Solution {
+public:
+
+    int longestCommonSubsequence(string text1, string text2) {
+        int m=text1.size();
+        int n=text2.size();
+        vector<vector<int>>dp(m+1,vector<int>(n+1,0));
+        for(int i=1;i<m+1;i++){
+            for(int j=1;j<n+1;j++){
+                if(text1[i-1]==text2[j-1]){
+                    dp[i][j]=1+dp[i-1][j-1];
+                }else{
+                    dp[i][j]=max(dp[i][j-1],dp[i-1][j]);
+                }
+            }
+        }
+       return dp[m][n];
     }
 };
