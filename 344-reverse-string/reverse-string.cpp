@@ -1,6 +1,6 @@
 //Time Complexity: O(n)
 //Space Complexity: O(1)
-class Solution {
+/*class Solution {
 public:
     void reverseString(vector<char>& s) {
         int i=0;
@@ -12,5 +12,21 @@ public:
            i++;
            j--;
         }
+    }
+};*/
+
+class Solution {
+public:
+   void Solve(vector<char>& s,int i){
+    if(i>=s.size()){
+        s.clear();
+        return;
+    }
+    char temp=s[i];
+    Solve(s,i+1);
+    s.push_back(temp);
+   }
+    void reverseString(vector<char>& s) {
+        Solve(s,0);
     }
 };
