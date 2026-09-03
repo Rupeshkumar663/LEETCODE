@@ -113,7 +113,7 @@ int dp[201][100001];
 //Time Complexity: O(2^n)
 //Space Complexity: O(1)
 //Tabulation/Bottom-Up Approach--------------------
-
+/*
 class Solution {
 public:
 
@@ -139,5 +139,39 @@ public:
         }
        }
        return dp[n][sum/2];
+    }
+};
+*/
+
+class Solution {
+public:
+  int n;
+  int dp[201][100000];
+  bool Solve(int i,int target,vector<int>&nums){
+    if(target==0){
+        return true;
+    }
+    if(i==n){
+        return false;
+    }
+    
+    if(dp[i][target]!=-1){
+        return dp[i][target];
+    }
+   bool take=0;
+    if(target>=nums[i]){
+      take=Solve(i+1,target-nums[i],nums);
+    }
+    bool skip=Solve(i+1,target,nums);
+     return dp[i][target]=skip || take;
+  }
+    bool canPartition(vector<int>& nums) {
+         n=nums.size();
+        int sum=accumulate(nums.begin(),nums.end(),0);
+        if(sum%2==1){
+            return false;
+        }
+        memset(dp,-1,sizeof(dp));
+      return   Solve(0,sum/2,nums);
     }
 };
