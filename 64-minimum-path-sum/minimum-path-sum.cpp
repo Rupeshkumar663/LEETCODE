@@ -21,7 +21,7 @@ public:
         n=grid[0].size();
         return solve(grid,0,0);
     }
-};*/
+};
 
 //Time Complexity: O(n*n)
  //Space Complexity: O(n*n)
@@ -85,3 +85,33 @@ public:
     }
 };
 */
+
+ //Time Complexity: O(n*n)
+ //Space Complexity: O(n*n)
+ //Bottom-up Approach----------
+ 
+class Solution {
+  public:
+  int m,n;
+  int dp[201][201];
+   int solve(int i,int j,vector<vector<int>>& grid){
+    if(i==m-1 && j==n-1){
+        return grid[i][j];
+    }
+    if(i>=m || j>=n){
+        return INT_MAX;
+    }
+    if(dp[i][j]!=-1){
+        return dp[i][j];
+    }
+    long long right=(long long)grid[i][j]+solve(i,j+1,grid);
+    long long left=(long long)grid[i][j]+solve(i+1,j,grid);
+    return dp[i][j]=(int)min(right,left);
+   }
+    int minPathSum(vector<vector<int>>& grid) {
+        m=grid.size();
+        n=grid[0].size();
+        memset(dp,-1,sizeof(dp));
+      return solve(0,0,grid);
+    }
+};
