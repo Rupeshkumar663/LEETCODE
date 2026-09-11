@@ -26,7 +26,7 @@ int n;
         return result;
     }
 };*/
-//Time Complexity: O(n*n)
+/*//Time Complexity: O(n*n)
 //Space COmplexity: O(n*n)
 //Recursion +Memoization Approach------------
 class Solution {
@@ -59,5 +59,66 @@ int dp[13][10001];
         if(result==INT_MAX)
           return -1;
         return result;
+    }
+};*/
+
+/*//Time Complexity: O(n*n)
+//Space COmplexity: O(n*n)
+//Recursion +Memoization Approach------------
+class Solution {
+public:
+ int n;
+    int Solve(int i,int amount,vector<int>& coins){
+        if(amount==0){
+            return 1;
+        }
+        f(i==n){
+            return 0;
+        }
+        int take=0;
+        if(amount[i]>=coins[i]){
+            take=Solve(i+1,amount-coins[i],coins);
+        }
+        int take=Slve(i+1,amount,coins);
+        return skip+take;
+    }
+    int coinChange(vector<int>& coins, int amount) {
+      n=coins.size();
+      return Solve(0,amount,count,coins);
+    }
+};*/
+
+
+//Time Complexity: O(n*n)
+//Space COmplexity: O(n*n)
+//Recursion +Memoization Approach------------
+class Solution {
+public:
+ int n;
+ int dp[13][10001];
+  int Solve(int i,int amount,vector<int>& coins){
+    if(amount==0){
+        return 0;
+    }
+    if(i==n){
+        return INT_MAX;
+    }
+   if(dp[i][amount]!=-1){
+    return dp[i][amount];
+   }
+   int take=INT_MAX;
+   if(amount>=coins[i]){
+     take=Solve(i,amount-coins[i],coins);
+     if(take!=INT_MAX){
+        take++;
+     }
+   }
+   int skip=Solve(i+1,amount,coins);
+    return dp[i][amount]=min(skip,take);
+  }
+    int coinChange(vector<int>& coins, int amount) {
+      n=coins.size();
+      memset(dp,-1,sizeof(dp));
+      return Solve(0,amount,coins)==INT_MAX?-1:Solve(0,amount,coins);
     }
 };
