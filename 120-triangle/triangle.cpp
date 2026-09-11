@@ -21,7 +21,7 @@ public:
 
 */
 
-
+/*
 //Time Complexity: O(n*n)
 //Space Complexity: O(n*n)
 //Top-Down Approach (Recursion + Memoization)
@@ -49,11 +49,7 @@ public:
 };
 
 
-
-
-
-
-
+*/
 
 
 
@@ -74,3 +70,30 @@ public:
         return dp[0];
     }
 };*/
+
+//Time Complexity: O(n*n)
+//Space Complexity: O(n*n)
+//Top-Down Approach (Recursion + Memoization)
+
+class Solution {
+public:
+   int n;
+   vector<vector<int>>dp;
+     int solve(int i,int j,vector<vector<int>>& triangle){
+        if(i==n-1){
+            return triangle[i][j];
+        }
+        if(dp[i][j]!=INT_MAX){
+            return dp[i][j];
+        }
+        int current=triangle[i][j]+solve(i+1,j,triangle);
+        int next=triangle[i][j]+solve(i+1,j+1,triangle);
+        return dp[i][j]=min(current,next);
+     }
+    int minimumTotal(vector<vector<int>>& triangle) {
+        n=triangle.size();
+        dp.assign(n,vector<int>(n,INT_MAX));
+        return solve(0,0,triangle);
+    }
+};
+
