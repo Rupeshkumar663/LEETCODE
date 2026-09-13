@@ -44,7 +44,7 @@ public:
 };*/
 
 
-//Time COmplexity: O(2^n)
+/*//Time COmplexity: O(2^n)
 //Space COmplexity: O(1)
 //Recursion + Memoization Appproach-------------
 class Solution {
@@ -69,5 +69,33 @@ public:
     int findTargetSumWays(vector<int>& nums,int target) {
      n=nums.size();
      return Solve(0,target,nums);
+    }
+};*/
+
+//Time COmplexity: O(2^n)
+//Space COmplexity: O(1)
+//Recursion + Memoization Appproach-------------
+class Solution {
+public:
+   int n;
+   map<pair<int,int>,int>dp;
+   int Solve(int i,int target,vector<int>nums){
+    if(i<0){
+        if(target==0){
+            return 1;
+        }
+       return 0;
+    }
+    pair<int,int>temp={i,target};
+    if(dp.find(temp)!=dp.end()){
+        return dp[temp];
+    }
+     int add=Solve(i-1,target+nums[i],nums);
+     int minus=Solve(i-1,target-nums[i],nums);
+     return dp[temp]=add+minus;
+   }
+    int findTargetSumWays(vector<int>& nums,int target) {
+     n=nums.size();
+     return Solve(n-1,target,nums);
     }
 };
