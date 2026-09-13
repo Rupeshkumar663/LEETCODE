@@ -183,9 +183,7 @@ int Solve(int i,int j,string &text1, string &text2){
     }
 };
 */
-
-
-class Solution {
+/*class Solution {
 public:
 
     int longestCommonSubsequence(string text1, string text2) {
@@ -202,5 +200,34 @@ public:
             }
         }
        return dp[m][n];
+    }
+};*/
+
+
+class Solution {
+public:
+   int m,n;
+    int dp[1001][1001];
+   int Solve(int i,int j,string &text1, string &text2){
+     if(i==m|| j==n){
+        return 0;
+     }
+     if(dp[i][j]!=-1){
+        return dp[i][j];
+     }
+     int equal=0,notequal=0;
+     if(text1[i]==text2[j]){
+        equal=1+Solve(i+1,j+1,text1,text2);
+     }else{
+        notequal=max(Solve(i,j+1,text1,text2),Solve(i+1,j,text1,text2));
+     }
+     return dp[i][j]=max(equal,notequal);
+   }
+    int longestCommonSubsequence(string text1, string text2) {
+         m=text1.size();
+         n=text2.size();
+         memset(dp,-1,sizeof(dp));
+      return Solve(0,0,text1,text2);
+        
     }
 };
