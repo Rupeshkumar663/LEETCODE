@@ -24,9 +24,10 @@ public:
     }
 };*/
 
+//Time Complexity :(n)
+//Space Complexity :(1)
 class Solution {
 public:
- 
     double myPow(double x, long long n) {
         if(n==0){
             return 1;
