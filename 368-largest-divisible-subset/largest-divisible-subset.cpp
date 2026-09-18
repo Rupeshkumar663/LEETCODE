@@ -81,10 +81,10 @@ public:
 };
 */
 
-class Solution {
+/*class Solution {
 public:
     int n;
-    vector<int> nums;
+    vector<int>nums;
     int dp[1001][1001];
     int solve(int idx,int prev){
         if(idx>=n){
@@ -111,17 +111,60 @@ public:
         int prev=-1;
         while(idx<n){
             int take=0;
-            if(prev==-1 || nums[idx] % nums[prev]==0){
-                take=1+ solve(idx+1,idx);
+            if(prev==-1 || nums[idx]%nums[prev]==0){
+                take=1+solve(idx+1,idx);
             }
             int notTake=solve(idx+1,prev);
-            if(take>=notTake &&
-               (prev==-1 || nums[idx]%nums[prev]==0)){
+            if(take>=notTake && (prev==-1 || nums[idx]%nums[prev]==0)){
                 ans.push_back(nums[idx]);
                 prev=idx;
             }
             idx++;
         }
         return ans;
+    }
+};*/
+
+class Solution {
+public:
+    int n;
+    vector<int>nums;
+    int dp[1001][1001];
+    int Solve(int i,int prev){
+        if(i>=n){
+            return 0;
+        }
+        if(dp[i][prev+1]!=-1){
+            return dp[i][prev+1];
+        }
+        int take=0;
+        if(prev==-1 || (nums[prev]%nums[i])==0 || (nums[i]%nums[prev])==0){
+            take=1+Solve(i+1,i);
+        }
+        int skip=Solve(i+1,prev);
+        return dp[i][prev+1]=max(skip,take);
+    }
+    vector<int> largestDivisibleSubset(vector<int>& arr){
+       n=arr.size();
+       nums=arr;
+       sort(nums.begin(),nums.end());
+       memset(dp,-1,sizeof(dp));
+       Solve(0,-1);
+       int i=0;
+       int prev=-1;
+       vector<int>result;
+       while(i<n){
+          int take=0;
+            if(prev==-1 || (nums[prev]%nums[i])==0 || (nums[i]%nums[prev])==0){
+              take=1+Solve(i+1,i);
+            }
+            int skip=Solve(i+1,prev);
+            if(take>skip &&(prev==-1 || (nums[prev]%nums[i])==0 || (nums[i]%nums[prev])==0)){
+                result.push_back(nums[i]);
+                prev=i;
+            }
+            i++;
+       }
+       return result;
     }
 };
