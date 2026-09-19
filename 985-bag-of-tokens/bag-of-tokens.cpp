@@ -6,7 +6,6 @@ public:
         sort(tokens.begin(),tokens.end());
         int i=0;
         int j=tokens.size()-1;
-
         while(i<=j){
             if(tokens[i]<=power){
                 score++;
@@ -23,7 +22,6 @@ public:
                 break;
             }
         }
-
         return ans;
     }
 };
