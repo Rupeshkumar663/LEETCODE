@@ -1,3 +1,6 @@
+//Time Complexity: O(nlogn)
+//Space Complexity: O(1)
+//By Greedy Approach
 class Solution {
 public:
     int bagOfTokensScore(vector<int>& tokens, int power) {
