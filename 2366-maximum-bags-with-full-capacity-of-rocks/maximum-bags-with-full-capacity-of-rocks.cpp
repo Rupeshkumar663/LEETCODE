@@ -1,3 +1,5 @@
+//Time Complexity: O(nlogn)
+//Solve By Greedy Approach
 class Solution {
 public:
     int maximumBags(vector<int>& capacity, vector<int>& rocks, int additionalRocks) {
