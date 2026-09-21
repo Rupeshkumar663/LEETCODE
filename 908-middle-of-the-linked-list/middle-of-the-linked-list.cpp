@@ -8,7 +8,7 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
- //T.C-O(N)
+/* //T.C-O(N)
  //S.C-O(1)
 class Solution {
 public:
@@ -32,5 +32,25 @@ public:
          result=temp->next;
          temp->next=NULL;
         return result;
+    }
+};*/
+
+ //T.C-O(N)
+ //S.C-O(1)
+class Solution {
+public:
+    ListNode* middleNode(ListNode* head) {
+      int n=0;
+      ListNode* temp=head;
+      while(temp!=NULL){
+        n++;
+        temp=temp->next;
+      }
+      n=n/2;
+      ListNode* t=head;
+      while(n--){
+        t=t->next;
+      }
+      return t;
     }
 };
