@@ -83,7 +83,8 @@ public:
 };
 */
 
-
+//Time Complexity: O(n*n*l)
+//Space Complexity: O(n*n)
 class Solution {
 public:
     bool checkvalid(string &a,string &b){
