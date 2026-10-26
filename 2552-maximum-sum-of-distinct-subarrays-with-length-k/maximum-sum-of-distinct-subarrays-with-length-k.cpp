@@ -28,7 +28,7 @@ public:
     }
 };*/
 
-//Time COmplexity: O(n)
+/*//Time COmplexity: O(n)
 //Space Complexity: O(n)
 class Solution {
 public:
@@ -55,5 +55,72 @@ public:
             j++;
         }
        return maxi;
+    }
+};*/
+
+//Time COmplexity: O(n)
+//Space Complexity: O(n)
+/*class Solution {
+public:
+    long long maximumSubarraySum(vector<int>& nums, int k) {
+        int n=nums.size();
+        unordered_set<int>s;
+        long long  maxi=0;
+        long long sum=0;
+        int i=0,j=0;
+        while(s.size()!=k && j<n){
+            if(s.find(nums[j])!=s.end()){
+              sum-=(int)nums[i];
+              s.erase(nums[i]);
+              i++;
+            }
+            sum+=(int)nums[j];
+            s.insert(nums[j]);
+            j++;
+        }
+         if(s.size()==k)
+          maxi=max(maxi,sum);
+         while(j<n){
+            if(s.find(nums[j])==s.end()){
+              sum+=(int)nums[j];
+              sum-=(int)nums[i];
+              if(s.size()==k)
+               maxi=max(maxi,sum);
+            }
+            s.erase(nums[i]);
+            s.insert(nums[j]);
+            i++;
+            j++;
+         }
+         return maxi;
+    }
+};*/
+
+class Solution {
+public:
+    long long maximumSubarraySum(vector<int>& nums, int k) {
+        int n=nums.size();
+        unordered_set<int>s;
+        long long  maxi=0;
+        long long sum=0;
+        int i=0,j=0;
+         while(j<n){
+            while(s.find(nums[j])!=s.end()){
+                s.erase(nums[i]);
+                sum-=nums[i];
+                i++;
+                
+            }
+            sum+=(int)nums[j];
+            s.insert(nums[j]);
+            j++;
+            if(s.size()==k){
+               maxi=max(maxi,sum);
+               sum-=(int)nums[i];
+               s.erase(nums[i]);
+               i++;
+            }
+         }
+         return maxi;
     }
 };
