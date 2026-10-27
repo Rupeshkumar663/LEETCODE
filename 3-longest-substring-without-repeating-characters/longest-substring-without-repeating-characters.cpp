@@ -85,7 +85,7 @@ public:
     }
 };*/
 
-class Solution {
+/*class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
       int n=s.size();
@@ -101,10 +101,33 @@ public:
            ss.erase(s[j]);
             j++;
         }
-        
         ss.insert(s[i]);
          result=max((int)ss.size(),result);
       }
        return result;
+    }
+};*/
+
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+      int n=s.size();
+      unordered_set<char>ss;
+      int maxi=0;
+      int i=0,j=0;
+      while(i<n){
+        if(ss.find(s[i])!=ss.end()){
+            while(s[i]!=s[j]){
+                ss.erase(s[j]);
+                j++;
+            }
+            ss.erase(s[j]);
+                j++;
+        }
+        ss.insert(s[i]);
+        maxi=max(maxi,(int)ss.size());
+        i++;
+      }
+      return maxi;
     }
 };
