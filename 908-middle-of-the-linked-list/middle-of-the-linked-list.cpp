@@ -35,7 +35,7 @@ public:
     }
 };*/
 
- //T.C-O(N)
+/* //T.C-O(N)
  //S.C-O(1)
 class Solution {
 public:
@@ -52,5 +52,25 @@ public:
         t=t->next;
       }
       return t;
+    }
+};*/
+
+ //T.C-O(N)
+ //S.C-O(1)
+class Solution {
+public:
+    ListNode* middleNode(ListNode* head) {
+      int n=0;
+      ListNode *t=head;
+      while(t!=NULL){
+        n++;
+        t=t->next;
+      }
+      n=n/2;
+      ListNode *result=head;
+      while(n--){
+        result=result->next;
+      }
+      return result;
     }
 };
