@@ -346,7 +346,7 @@ public:
 };*/
 
 
-//Time Complexity: O(n*n)
+/*//Time Complexity: O(n*n)
 //Space Complexity: O(n*n)
 class Solution {
 public:
@@ -375,6 +375,49 @@ public:
        for(int i=0;i<m;i++){
         if(visited[i]==false){
             DFS(i,visited,adj);
+            result++;
+        }
+       }
+      return result;
+    }
+};*/
+
+//Time Complexity: O(n*n)
+//Space Complexity: O(n*n)
+class Solution {
+public:
+  int m,n;
+  void BFS(int u,vector<int>&visited,unordered_map<int,vector<int>>&adj){
+    queue<int>q;
+    q.push(u);
+    visited[u]=true;
+    while(!q.empty()){
+        int temp=q.front();
+        q.pop();
+        for(auto v:adj[temp]){
+            if(visited[v]==false){
+                q.push(v);
+                visited[v]=true;
+            }
+        }
+    }
+  }
+  int findCircleNum(vector<vector<int>>& isConnected) {
+       int m=isConnected.size();
+       int n=isConnected[0].size();
+       int result=0;
+       unordered_map<int,vector<int>>adj;
+       for(int i=0;i<m;i++){
+        for(int j=0;j<n;j++){
+            if(isConnected[i][j]==1){
+                adj[i].push_back(j);
+            }
+         }
+       }
+       vector<int>visited(m,false);
+       for(int i=0;i<m;i++){
+        if(visited[i]==false){
+            BFS(i,visited,adj);
             result++;
         }
        }
