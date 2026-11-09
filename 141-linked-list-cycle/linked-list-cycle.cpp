@@ -8,7 +8,7 @@
  */
  //T.C-O(N)
  //S.C-O(1)
-class Solution {
+/*class Solution {
 public:
     bool hasCycle(ListNode *head) {
         unordered_set<ListNode*>s;
@@ -21,5 +21,20 @@ public:
             }
         }
         return false;
+    }
+};*/
+
+class Solution {
+public:
+    bool hasCycle(ListNode *head) {
+       unordered_set<ListNode*>s;
+       while(head){
+        if(s.count(head)){
+            return true;
+        }
+         s.insert(head);
+         head=head->next;
+       }
+       return false;
     }
 };
